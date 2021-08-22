@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Time Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            font-family: "Segoe UI" !important;
+        }
+
+        .modal-header {
+            border: none;
+        }
+
+        .modal-title {
+            padding-left: 10px;
+        }
+
+        ::-webkit-input-placeholder {
+            text-align: center;
+        }
+
+        :-moz-placeholder {
+            /* Firefox 18- */
+            text-align: center;
+        }
+
+        ::-moz-placeholder {
+            /* Firefox 19+ */
+            text-align: center;
+        }
+
+        :-ms-input-placeholder {
+            text-align: center;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #707070;
+        }
+
+        .separator::before {
+            margin-right: .25em;
+        }
+
+        .separator::after {
+            margin-left: .25em;
+        }
+
+        .row.vertical-divider [class*='col-']:not(:last-child)::after {
+            background: #e0e0e0;
+            width: 1px;
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            min-height: 70px;
+        }
+
+        .modal-backdrop {
+            background-color: #FFFFFF;
+        }
+
+        header.masthead {
+            padding-bottom: 7.5rem !important;
+        }
+
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            top: -32%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- fixed sidebar btns -->
+    <div class="icon-bar d-none d-lg-block">
+        <a href="#" class="facebook"><img class="shadow-img" src="images/facebook.png" alt="" srcset=""></a>
+        <a href="#" class="twitter"><img class="shadow-img" src="images/instagram-sketched.png" alt="" srcset=""></a>
+        <a href="#" class="google"><img class="shadow-img" src="images/twitter.png" alt="" srcset=""></a>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="images/logo-blanc.png" alt="" /></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+
+            </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item"><a class="nav-link" href="./index.html">HOME</a></li>
+                <li class="nav-item"><a class="nav-link" href="./aboutus.html">ABOUT US</a></li>
+                <li class="nav-item"><a class="nav-link" href="./portfolio.html">PORTFOLIO</a></li>
+                <li class="nav-item"><a class="nav-link" href="./contactus.html">CONTACT</a></li>
+                <li class="nav-item"><a class="nav-link" href="./meeting.html">MEETING</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+        
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="text-white dropdown-item" style="text-transform: none;text-align: center;" data-toggle="modal"
+                            data-target="#exampleModalsignin">Sign In</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="text-white dropdown-item" style="text-transform: none;text-align: center;" data-toggle="modal"
+                            data-target="#exampleModal">Sign Up</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+
+
+    <!-- sign up modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class=" px-4 modal-title" id="exampleModalLabel">Create An Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body px-5">
+                    <p>You have an account? <a onclick="openSignIn()" style="color:#00CDDC">Sign In</a></p>
+    
+                    <div class="row vertical-divider ">
+                        <div class="col-6">
+                            <form>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="text" class="form-control"
+                                            placeholder="First name">
+                                    </div>
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="text" class="form-control"
+                                            placeholder="Last name">
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="email" class="form-control"
+                                            placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="password" class="form-control"
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <button type="button"
+                                            style="color: white;width: 100%;border-radius: 37px;background-color: #05a7a7; border-color: #05a7a7"
+                                            class="btn btn-primary">Sign Up</button>
+                                    </div>
+                                </div>
+                               
+                            </form>
+    
+                        </div>
+    
+                        <div class="col-6 text-center">
+                            <img class="mx-5 pb-5" style="height: 300px" src="images/lampe.png" alt="" srcset="">
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <!-- sign in modal -->
+    <div class="modal fade" id="exampleModalsignin" tabindex="-1" role="dialog" aria-labelledby="exampleModalsignin"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class=" px-4 modal-title" id="exampleModalLabel">Sign in</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body px-5">
+                    <p>You do not have an account? <a onclick="openSignUp()" style="color:#00CDDC">Sign Up</a></p>
+    
+                    <div class="row vertical-divider ">
+                        <div class="col-6">
+                            <form>
+    
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="email" class="form-control"
+                                            placeholder="Username or Email">
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="password" class="form-control"
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <button type="button"
+                                            style="color: white;width: 100%;border-radius: 37px;background-color: #05a7a7; border-color: #05a7a7"
+                                            class="btn btn-primary">Sign In</button>
+                                    </div>
+                                </div>
+                               
+                            </form>
+    
+                        </div>
+    
+                        <div class="col-6 text-center">
+                            <img class="mx-5 pb-5" style="height: 300px" src="images/lampe.png" alt="" srcset="">
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Masthead-->
+    <header class="masthead" style="background-image: url(./images/aboutus.png);">
+        <div class="container">
+
+
+            <div class="row">
+
+                <div class="col-lg-5 col-sm-12">
+                    <div class="masthead-heading text-bold">Time.Studios About Us</div>
+                </div>
+                <div class="col-lg-2 col-sm-12 d-none d-lg-block">
+                    <img style="height: 200px;" src="images/bar.png" alt="" srcset="">
+                </div>
+                <div class="col-lg-5  col-sm-12">
+                    <h2>Time Studios</h2>
+                    <p>Yet as a team we can pull together to do some incredible work</p>
+                    <h4>Randy West</h4>
+                    <br><br><br><br><br>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+
+    <section class="page-section" id="services">
+        <div class="container">
+            <h1 class="pb-5">Our Team</h1>
+            <div class="row">
+                <div class="col-4 py-3">
+                    <div style="-webkit-box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);
+-moz-box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);
+box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);" class="card" style="width: 18rem;">
+                        <div class="card-body text-center">
+                            <img style="width: 100px" src="images/i1.png" alt="" srcset="">
+                            <h6 style="color: #05A7A7" class="pt-3 card-title">Wael Belaid</h6>
+                            <p class="card-text">General Manager</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 py-3">
+                    <div style="-webkit-box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);
+                -moz-box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);
+                box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);" class="card" style="width: 18rem;">
+                        <div class="card-body text-center">
+                            <img style="width: 100px" src="images/i2.png" alt="" srcset="">
+                            <h6 style="color: #05A7A7" class="pt-3 card-title">Aymen Belaid</h6>
+                            <p class="card-text">Production director</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 py-3">
+                    <div style="-webkit-box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);
+                -moz-box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);
+                box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);" class="card" style="width: 18rem;">
+                        <div class="card-body text-center">
+                            <img style="width: 100px" src="images/i3.png" alt="" srcset="">
+                            <h6 style="color: #05A7A7" class="pt-3 card-title">Wael Belaid</h6>
+                            <p class="card-text">Production assistant</p>
+                            <br>
+                 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 py-3">
+                    <div style="-webkit-box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);
+                                -moz-box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);
+                                box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);" class="card" style="width: 18rem;">
+                        <div class="card-body text-center">
+                            <img style="width: 100px" src="images/igif.gif" alt="" srcset="">
+                            <h6 style="color: #05A7A7" class="pt-3 card-title">Wael Belaid</h6>
+                            <p class="card-text">Production assistant</p>
+                            <br>
+                
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 py-3">
+                    <div style="-webkit-box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);
+                                                -moz-box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);
+                                                box-shadow: 7px 10px 41px -8px rgba(0,0,0,0.27);" class="card" style="width: 18rem;">
+                        <div class="card-body text-center">
+                            <img style="width: 100px" src="images/i3.png" alt="" srcset="">
+                            <h6 style="color: #05A7A7" class="pt-3 card-title">Wael Belaid</h6>
+                            <p class="card-text">Production assistant</p>
+                            <br>
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="footer">
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-6 text-left">
+                <img src="images/logo-blanc.png" alt="" />
+                <h1>Time Studio</h1>
+                <p>Radio broadcasting and media production company.</p>
+                <p>Tel: (+216) 94 61 30 76</p>
+                <p>Email: waelbelaid205@gmail.com</p>
+                <p>Address: Sidihassine 1095 Tunis, Tunisia</p>
+
+
+                <a href="#" class="facebook px-2"><img class="shadow-img" src="images/facebook.png" alt=""
+                        srcset=""></a>
+                <a href="#" class="google px-2"><img width="34" class="shadow-img" src="images/vimeo.png" alt=""
+                        srcset=""></a>
+            </div>
+            <div class="col-6 text-left">
+                <h2 class="pt-2 pb-3">Newsletter</h2>
+                <h5 class="font-weight-normal">Sign Up</h5>
+                <br>
+                <div class="row">
+                    <div class="col-8"><input placeholder="Your Email"
+                            style="width: 100%; border-radius: 50px !important;" class="form-control" type="text"
+                            name="newsletter" id="newsletter"></div>
+                    <div class="col-4"><button type="button"
+                            style="font-size: 11px;padding: 10px;color: #ffffff;width: 100%;border-radius: 37px;background-color: #05a7a7; border-color: #05a7a7;"
+                            class="btn btn-primary">Subscribe</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+
+    <script>
+        var navbar = document.querySelector('nav')
+
+        window.onscroll = function () {
+
+            // pageYOffset or scrollY
+            if (window.pageYOffset > 0) {
+                navbar.classList.add('navbar-shrink')
+            } else {
+                navbar.classList.remove('navbar-shrink')
+            }
+        }
+
+
+        function openSignIn() {
+                console.log("click1");
+                $('#exampleModal').modal('toggle');
+                $('#exampleModalsignin').modal('toggle');
+            }
+
+            function openSignUp() {
+                console.log("click2");
+                $('#exampleModal').modal('toggle');
+                $('#exampleModalsignin').modal('toggle');
+            }
+    </script>
+</body>
+
+</html>

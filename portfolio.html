@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Time Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            font-family: "Segoe UI" !important;
+        }
+
+        .modal-header {
+            border: none;
+        }
+
+        .modal-title {
+            padding-left: 10px;
+        }
+
+
+
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #707070;
+        }
+
+        .separator::before {
+            margin-right: .25em;
+        }
+
+        .separator::after {
+            margin-left: .25em;
+        }
+
+        .row.vertical-divider [class*='col-']:not(:last-child)::after {
+            background: #e0e0e0;
+            width: 1px;
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            min-height: 70px;
+        }
+
+        .modal-backdrop {
+            background-color: #FFFFFF;
+        }
+
+        header.masthead {
+            padding-bottom: 7.5rem !important;
+        }
+
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            top: -32%;
+        }
+
+        .modal-dialog {
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+
+
+        .modal-body {
+            position: relative;
+            padding: 0px;
+        }
+
+        .close {
+            position: absolute;
+            right: -30px;
+            top: 0;
+            z-index: 999;
+            font-size: 2rem;
+            font-weight: normal;
+            color: #fff;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- fixed sidebar btns -->
+    <div class="icon-bar d-none d-lg-block">
+        <a href="#" class="facebook"><img class="shadow-img" src="images/facebook.png" alt="" srcset=""></a>
+        <a href="#" class="twitter"><img class="shadow-img" src="images/instagram-sketched.png" alt="" srcset=""></a>
+        <a href="#" class="google"><img class="shadow-img" src="images/twitter.png" alt="" srcset=""></a>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="images/logo-blanc.png" alt="" /></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./aboutus.html">ABOUT US</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./portfolio.html">PORTFOLIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contactus.html">CONTACT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./meeting.html">MEETING</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+            
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="text-white dropdown-item" style="text-transform: none;text-align: center;" data-toggle="modal"
+                                data-target="#exampleModalsignin">Sign In</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="text-white dropdown-item" style="text-transform: none;text-align: center;" data-toggle="modal"
+                                data-target="#exampleModal">Sign Up</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- sign up modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class=" px-4 modal-title" id="exampleModalLabel">Create An Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body px-5">
+                    <p>You have an account? <a onclick="openSignIn()" style="color:#00CDDC">Sign In</a></p>
+    
+                    <div class="row vertical-divider ">
+                        <div class="col-6">
+                            <form>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="text" class="form-control"
+                                            placeholder="First name">
+                                    </div>
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="text" class="form-control"
+                                            placeholder="Last name">
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="email" class="form-control"
+                                            placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="password" class="form-control"
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <button type="button"
+                                            style="color: white;width: 100%;border-radius: 37px;background-color: #05a7a7; border-color: #05a7a7"
+                                            class="btn btn-primary">Sign Up</button>
+                                    </div>
+                                </div>
+                                
+                            </form>
+    
+                        </div>
+    
+                        <div class="col-6 text-center">
+                            <img class="mx-5 pb-5" style="height: 300px" src="images/lampe.png" alt="" srcset="">
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <!-- sign in modal -->
+    <div class="modal fade" id="exampleModalsignin" tabindex="-1" role="dialog" aria-labelledby="exampleModalsignin"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class=" px-4 modal-title" id="exampleModalLabel">Sign in</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body px-5">
+                    <p>You do not have an account? <a onclick="openSignUp()" style="color:#00CDDC">Sign Up</a></p>
+    
+                    <div class="row vertical-divider ">
+                        <div class="col-6">
+                            <form>
+    
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="email" class="form-control"
+                                            placeholder="Username or Email">
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <input style="border-radius: 50px !important;" type="password" class="form-control"
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <button type="button"
+                                            style="color: white;width: 100%;border-radius: 37px;background-color: #05a7a7; border-color: #05a7a7"
+                                            class="btn btn-primary">Sign In</button>
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <div class="separator">Or Sign With</div>
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col text-center">
+                                        <a href="#" class="facebook px-3"><img style="width: 50px"
+                                                src="images/facebook-b.png" alt="" srcset=""></a>
+                                        <a href="#" class="twitter  px-3"><img style="width: 50px"
+                                                src="images/instagram-sketched-b.png" alt="" srcset=""></a>
+                                        <a href="#" class="google px-3"><img style="width: 50px" src="images/twitter-b.png"
+                                                alt="" srcset=""></a>
+                                        <br>
+                                        <br>
+                                    </div>
+                                </div>
+                            </form>
+    
+                        </div>
+    
+                        <div class="col-6 text-center">
+                            <img class="mx-5 pb-5" style="height: 300px" src="images/lampe.png" alt="" srcset="">
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Masthead-->
+    <header class="masthead" style="background-image: url(./images/Groupe26.png);">
+        <div class="container">
+
+
+            <div class="row">
+
+                <div class="col-lg-5 col-sm-12">
+                    <div class="masthead-heading text-bold">Time.Studios<br>Works</div>
+                </div>
+                <div class="col-lg-2 col-sm-12 d-none d-lg-block">
+                    <img style="height: 200px;" src="images/bar.png" alt="" srcset="">
+                </div>
+                <div class="col-lg-5  col-sm-12">
+                    <h2>Time Studios Work</h2>
+                    <p>My videos are meant to make people look at themselves at the end of the day, they all have a
+                        message</p>
+                    <h4>Joyner Lucas</h4>
+                    <br>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"
+                                style="border-top-left-radius: 25px;border-bottom-left-radius: 25px;    background-color: #ffffff;">
+                                <img style="width: 20px" src="images/search.png" alt="" srcset="">
+                            </div>
+                        </div>
+                        <input style="border-bottom-right-radius: 25px;border-top-right-radius: 25px;" type="text"
+                            class="form-control" id="inlineFormInputGroup" placeholder="">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always"
+                            allow="autoplay"></iframe>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <section class="page-section" id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 py-3">
+                    <div class="shadow card" style="width: 18rem;">
+                        <img style="cursor: pointer;border: none;background: transparent;padding: 0;" class="btn btn-primary video-btn card-img-top" data-toggle="modal"
+                            data-src="https://player.vimeo.com/video/407375210?badge=0" data-target="#myModal"
+                            src="images/Groupe 40.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Safi - Chikh Fterich</h5>
+                            <p style="font-size: 11px;" class="card-text">
+                                Agency : 109 Communication Consulting Agency<br>
+                                Production : Avant Garde Production<br>
+                                Producer : Walid soussi<br>
+                                Director : Amine Tlili<br>
+                                DOP : Rabii Ben Dbebis<br>
+                                Post-Production : Time Studio<br>
+                                Editing & Coloring : Mathlouthi Mohamed<br>
+                                Mix : Ayed Ghanim<br>
+                                Music : Seif Kechrid<br>
+                            </p>
+                            <h6>Add Comment</h6>
+
+                            <div class="row">
+                                <div class="col-10">
+                                    <textarea placeholder="Add Comment" style="border-radius: 25px;"
+                                        class="shadow form-control" name="comment" id="comment" cols="2"
+                                        rows="2"></textarea>
+                                </div>
+                                <div class="col-2">
+                                    <img style="width: 30px; padding-top: 5px;" src="images/Icon material-send.png"
+                                        alt="" srcset="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12 py-3">
+                    <div class="shadow card" style="width: 18rem;">
+                        <img style="cursor: pointer;border: none;background: transparent;padding: 0;"
+                            class="btn btn-primary video-btn card-img-top" data-toggle="modal"
+                            data-src="https://player.vimeo.com/video/407375210?badge=0" data-target="#myModal"
+                            src="images/Groupe 40.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Safi - Chikh Fterich</h5>
+                            <p style="font-size: 11px;" class="card-text">
+                                Agency : 109 Communication Consulting Agency<br>
+                                Production : Avant Garde Production<br>
+                                Producer : Walid soussi<br>
+                                Director : Amine Tlili<br>
+                                DOP : Rabii Ben Dbebis<br>
+                                Post-Production : Time Studio<br>
+                                Editing & Coloring : Mathlouthi Mohamed<br>
+                                Mix : Ayed Ghanim<br>
+                                Music : Seif Kechrid<br>
+                            </p>
+                            <h6>Add Comment</h6>
+                
+                            <div class="row">
+                                <div class="col-10">
+                                    <textarea placeholder="Add Comment" style="border-radius: 25px;" class="shadow form-control"
+                                        name="comment" id="comment" cols="2" rows="2"></textarea>
+                                </div>
+                                <div class="col-2">
+                                    <img style="width: 30px; padding-top: 5px;" src="images/Icon material-send.png" alt="" srcset="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12 py-3">
+                    <div class="shadow card" style="width: 18rem;">
+                        <img style="cursor: pointer;border: none;background: transparent;padding: 0;"
+                            class="btn btn-primary video-btn card-img-top" data-toggle="modal"
+                            data-src="https://player.vimeo.com/video/407375210?badge=0" data-target="#myModal"
+                            src="images/Groupe 40.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Safi - Chikh Fterich</h5>
+                            <p style="font-size: 11px;" class="card-text">
+                                Agency : 109 Communication Consulting Agency<br>
+                                Production : Avant Garde Production<br>
+                                Producer : Walid soussi<br>
+                                Director : Amine Tlili<br>
+                                DOP : Rabii Ben Dbebis<br>
+                                Post-Production : Time Studio<br>
+                                Editing & Coloring : Mathlouthi Mohamed<br>
+                                Mix : Ayed Ghanim<br>
+                                Music : Seif Kechrid<br>
+                            </p>
+                            <h6>Add Comment</h6>
+                
+                            <div class="row">
+                                <div class="col-10">
+                                    <textarea placeholder="Add Comment" style="border-radius: 25px;" class="shadow form-control"
+                                        name="comment" id="comment" cols="2" rows="2"></textarea>
+                                </div>
+                                <div class="col-2">
+                                    <img style="width: 30px; padding-top: 5px;" src="images/Icon material-send.png" alt="" srcset="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12 py-3">
+                    <div class="shadow card" style="width: 18rem;">
+                        <img style="cursor: pointer;border: none;background: transparent;padding: 0;"
+                            class="btn btn-primary video-btn card-img-top" data-toggle="modal"
+                            data-src="https://player.vimeo.com/video/407375210?badge=0" data-target="#myModal"
+                            src="images/Groupe 40.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Safi - Chikh Fterich</h5>
+                            <p style="font-size: 11px;" class="card-text">
+                                Agency : 109 Communication Consulting Agency<br>
+                                Production : Avant Garde Production<br>
+                                Producer : Walid soussi<br>
+                                Director : Amine Tlili<br>
+                                DOP : Rabii Ben Dbebis<br>
+                                Post-Production : Time Studio<br>
+                                Editing & Coloring : Mathlouthi Mohamed<br>
+                                Mix : Ayed Ghanim<br>
+                                Music : Seif Kechrid<br>
+                            </p>
+                            <h6>Add Comment</h6>
+                
+                            <div class="row">
+                                <div class="col-10">
+                                    <textarea placeholder="Add Comment" style="border-radius: 25px;" class="shadow form-control"
+                                        name="comment" id="comment" cols="2" rows="2"></textarea>
+                                </div>
+                                <div class="col-2">
+                                    <img style="width: 30px; padding-top: 5px;" src="images/Icon material-send.png" alt="" srcset="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12 py-3">
+                    <div class="shadow card" style="width: 18rem;">
+                        <img style="cursor: pointer;border: none;background: transparent;padding: 0;"
+                            class="btn btn-primary video-btn card-img-top" data-toggle="modal"
+                            data-src="https://player.vimeo.com/video/407375210?badge=0" data-target="#myModal"
+                            src="images/Groupe 40.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Safi - Chikh Fterich</h5>
+                            <p style="font-size: 11px;" class="card-text">
+                                Agency : 109 Communication Consulting Agency<br>
+                                Production : Avant Garde Production<br>
+                                Producer : Walid soussi<br>
+                                Director : Amine Tlili<br>
+                                DOP : Rabii Ben Dbebis<br>
+                                Post-Production : Time Studio<br>
+                                Editing & Coloring : Mathlouthi Mohamed<br>
+                                Mix : Ayed Ghanim<br>
+                                Music : Seif Kechrid<br>
+                            </p>
+                            <h6>Add Comment</h6>
+                
+                            <div class="row">
+                                <div class="col-10">
+                                    <textarea placeholder="Add Comment" style="border-radius: 25px;" class="shadow form-control"
+                                        name="comment" id="comment" cols="2" rows="2"></textarea>
+                                </div>
+                                <div class="col-2">
+                                    <img style="width: 30px; padding-top: 5px;" src="images/Icon material-send.png" alt="" srcset="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12 py-3">
+                    <div class="shadow card" style="width: 18rem;">
+                        <img style="cursor: pointer;border: none;background: transparent;padding: 0;"
+                            class="btn btn-primary video-btn card-img-top" data-toggle="modal"
+                            data-src="https://player.vimeo.com/video/407375210?badge=0" data-target="#myModal"
+                            src="images/Groupe 40.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Safi - Chikh Fterich</h5>
+                            <p style="font-size: 11px;" class="card-text">
+                                Agency : 109 Communication Consulting Agency<br>
+                                Production : Avant Garde Production<br>
+                                Producer : Walid soussi<br>
+                                Director : Amine Tlili<br>
+                                DOP : Rabii Ben Dbebis<br>
+                                Post-Production : Time Studio<br>
+                                Editing & Coloring : Mathlouthi Mohamed<br>
+                                Mix : Ayed Ghanim<br>
+                                Music : Seif Kechrid<br>
+                            </p>
+                            <h6>Add Comment</h6>
+                
+                            <div class="row">
+                                <div class="col-10">
+                                    <textarea placeholder="Add Comment" style="border-radius: 25px;" class="shadow form-control"
+                                        name="comment" id="comment" cols="2" rows="2"></textarea>
+                                </div>
+                                <div class="col-2">
+                                    <img style="width: 30px; padding-top: 5px;" src="images/Icon material-send.png" alt="" srcset="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="footer">
+    
+        <div class="container">
+            <div class="row ">
+                <div class="col-6 text-left">
+                    <img src="images/logo-blanc.png" alt="" />
+                    <h1>Time Studio</h1>
+                    <p>Radio broadcasting and media production company.</p>
+                    <p>Tel: (+216) 20 000 000</p>
+                    <p>Email: contact@timestudio.com</p>
+                    <p>Address: Bardo 1000 Tunis, Tunisia</p>
+    
+    
+                    <a href="#" class="facebook px-2"><img class="shadow-img" src="images/facebook.png" alt=""
+                            srcset=""></a>
+                    <a href="#" class="google px-2"><img width="34" class="shadow-img" src="images/vimeo.png" alt=""
+                            srcset=""></a>
+                </div>
+                <div class="col-6 text-left">
+                    <h2 class="pt-2 pb-3">Newsletter</h2>
+                    <h5 class="font-weight-normal">Sign Up</h5>
+                    <br>
+                    <div class="row">
+                        <div class="col-8"><input placeholder="Your Email"
+                                style="width: 100%; border-radius: 50px !important;" class="form-control" type="text"
+                                name="newsletter" id="newsletter"></div>
+                        <div class="col-4"><button type="button"
+                                style="font-size: 11px;padding: 10px;color: #ffffff;width: 100%;border-radius: 37px;background-color: #05a7a7; border-color: #05a7a7;"
+                                class="btn btn-primary">Subscribe</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+
+    <script>
+        var navbar = document.querySelector('nav')
+
+        window.onscroll = function () {
+
+            // pageYOffset or scrollY
+            if (window.pageYOffset > 0) {
+                navbar.classList.add('navbar-shrink')
+            } else {
+                navbar.classList.remove('navbar-shrink')
+            }
+        }
+
+
+        $(document).ready(function () {
+
+                // Gets the video src from the data-src on each button
+
+                var $videoSrc;
+                $('.video-btn').click(function () {
+                    $videoSrc = $(this).data("src");
+                });
+                console.log($videoSrc);
+
+
+
+                // when the modal is opened autoplay it  
+                $('#myModal').on('shown.bs.modal', function (e) {
+
+                    // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+                    $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+                })
+
+
+
+                // stop playing the youtube video when I close the modal
+                $('#myModal').on('hide.bs.modal', function (e) {
+                    // a poor man's stop video
+                    $("#video").attr('src', $videoSrc);
+                })
+
+
+
+
+
+
+                // document ready  
+            });
+
+        
+
+    function openSignIn() {
+        console.log("click1");
+        $('#exampleModal').modal('toggle');
+        $('#exampleModalsignin').modal('toggle');
+    }
+
+    function openSignUp() {
+        console.log("click2");
+        $('#exampleModal').modal('toggle');
+        $('#exampleModalsignin').modal('toggle');
+    }
+
+
+
+
+    </script>
+</body>
+
+</html>
